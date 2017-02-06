@@ -1,9 +1,25 @@
 language: android
 
+# Needs sudo to build
 sudo: required
 
 android:
   components:
     - build-tools-21.1.2
+    - sys-img-armeabi-v7a-android-22
     - android-22
     - extra-android-support
+ 
+# Cache for dependencies
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
+
+# Give gradlew write permission (needed to download dependencies)
+before_install:
+ - chmod +x gradlew
