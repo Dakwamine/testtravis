@@ -21,7 +21,17 @@ android:
     - add-on
     - extra
     
-
+    # Emulator
+    - sys-img-armeabi-v7a-android-21
+    
+# Emulator Management: Create, Start and Wait
+before_script:
+  # Use android-21 for travis test
+  - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+  
 before_install:
   # Give gradlew write permission (needed to download dependencies)
   - chmod +x gradlew
@@ -35,3 +45,6 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
+    
+script:
+  - ./gradlew connectedAndroidTest
