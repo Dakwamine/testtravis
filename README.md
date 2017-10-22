@@ -16,4 +16,4 @@ This application adds itself in the browsers list when touching a link to a http
 This application adds itself in the home-button-swipe-up-action list, aka assist functionality. This is set in the AndroidManifest.xml file, in the EmptyActivity section.
 
 ## Additional information
-When installed, this app does not add itself in the applications list (LAUNCHER category is not included in the manifest) simply because it is not useful.
+When installed, this app does not add itself in the applications list (LAUNCHER category is not included in the manifest) simply because it is not useful..
